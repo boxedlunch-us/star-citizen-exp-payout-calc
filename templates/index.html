@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Welcome to Tomcart Fuckery {% endblock %}</h1>
+    {#    <table>#}
+    {#        {% for member in members %}#}
+    {#            <tr>#}
+    {#                <td>{{ member['display'] }}</td>#}
+    {#            </tr>#}
+    {#        {% endfor %}#}
+    {#    </table>#}
+    <form method="POST" action="{{ url_for('results') }}">
+    <select name="member" method="get"  >
+        {% for member in members %}
+            <option value="{{ member['handle'] }}" SELECTED>{{ member['display'] }}</option>"
+        {% endfor %}
+    </select>
+    <button type="submit">Submit</button>
+    </form>
+    <div>
+        <p>Handle: {{members|length}}</p>
+    </div>
+{% endblock %}
