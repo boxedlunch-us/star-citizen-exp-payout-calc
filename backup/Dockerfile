@@ -1,8 +1,9 @@
-FROM python:3.6.1-alpine
+FROM ubuntu:18.04
 
 MAINTAINER Ricky Nelson "rnelson@thetomcart.com"
 
-RUN pip install -r requirements.txt
+RUN apt-get update -y && \
+    apt-get install -y python-pip python-dev
 
 # We copy just the requirements.txt first to leverage Docker cache
 COPY ../requirements.txt /app/requirements.txt
@@ -13,4 +14,6 @@ RUN pip install -r requirements.txt
 
 COPY .. /app
 
-CMD ["python","app.py"]
+ENTRYPOINT [ "python" ]
+
+CMD [ "app.py" ]
