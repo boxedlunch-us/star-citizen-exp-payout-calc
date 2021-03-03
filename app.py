@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import os
 import requests
 import json
 
@@ -20,10 +21,12 @@ def execute_rest(method, url, bearertoken, payload):
 url = "https://api.starcitizen-api.com/dMuf7rbc9Py1VWedOCPME8td9s5c99OW/v1/live/organization_members/EXEP"
 response = execute_rest("get", url, "", "")
 
+
 @app.route('/')
 def index():
+    color = os.environ.get("COLOR")
 
-    return render_template('index.html', members=response['data'])
+    return render_template('index.html', members=response['data'], color=color)
 
 
 @app.route('/results', methods=['POST'])

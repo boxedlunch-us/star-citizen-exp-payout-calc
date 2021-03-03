@@ -2,7 +2,7 @@ FROM python:3.6.1-alpine
 
 MAINTAINER Ricky Nelson "rnelson@thetomcart.com"
 
-
+ENV COLOR=red
 # We copy just the requirements.txt first to leverage Docker cache
 COPY ./requirements.txt /app/requirements.txt
 
