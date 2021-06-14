@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import os
 import requests
 import json
-
+import logging
 app = Flask(__name__)
 
 
@@ -39,6 +39,6 @@ def results():
                 member_info.append(r)
         return render_template('results.html', member=member_info)
 
-
+logging.warning("app shoulda been running by now; if it ain't its bork af")
 if __name__ == "__main__"
   app.run(host='0.0.0.0', port='8080')
